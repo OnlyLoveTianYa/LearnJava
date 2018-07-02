@@ -3,13 +3,13 @@ package com.onlylovetianya.encrypt;
 public class TestEncrypt {
 
     public static void main(String[] args) {
-
-        System.out.println(parseByte2HexStr("sso_cs_mstsc.exe-_-192.168.0.131-_-Administrator-_-bamboocloud@2017-_-3389+_+1920+_+1080".getBytes()));
-        System.out.println(parseByte2HexStr("sso_cs_common.exe-_-C:\\Program Files (x86)\\KeePass Password Safe 2\\KeePass.exe-_-OnlyLoveTianYa-_-950120-_-[TITLE:Open Database - NewDatabase.kdbx]+_++_+[Name:m_tbPassword]+_+[Name:m_btnOK]".getBytes()));
-        System.out.println(parseByte2HexStr("sso_cs_common.exe-_-C:\\Program Files (x86)\\Tencent\\QQ\\Bin\\QQScLauncher.exe-_-1169975059-_-950120ZHIwei-_-[CLASS:TXGuiFoundation; Title:QQ]+_+6+_+1+_+0".getBytes()));
-        System.out.println(parseByte2HexStr("sso_bs_common.exe-_-https://passport.csdn.net-_-763149560@qq.com-_-950120-_-formId:fm1+_+id:username+_+id:password".getBytes()));
-        System.out.println(parseByte2HexStr("sso_bs_common.exe-_-https://pan.baidu.com-_-18581518120-_-950120ZHIwei-_-formId:TANGRAM__PSP_4__formbuttonId:TANGRAM__PSP_4__submit+_+id:TANGRAM__PSP_4__userName+_+id:TANGRAM__PSP_4__password".getBytes()));
-        System.out.println(parseByte2HexStr("sso_bs_common.exe-_-https://github.com/login-_-OnlyLoveTianYa-_-950120ZHIwei-_-0+_+id:login_field+_+id:password".getBytes()));
+        System.out.println("bamboocloudsso://"+parseByte2HexStr("sso_bs_zhtjxt.exe-_-https://tuan.12355.net/index.html-_-username-_-password-_-0+_+id:login_field+_+id:password".getBytes()));
+        System.out.println("bamboocloudsso://"+parseByte2HexStr("sso_cs_mstsc.exe-_-192.168.0.131-_-Administrator-_-bamboocloud@2017-_-3389+_+1920+_+1080".getBytes()));
+        System.out.println("bamboocloudsso://"+parseByte2HexStr("sso_cs_common.exe-_-C:\\Program Files (x86)\\KeePass Password Safe 2\\KeePass.exe-_-username-_-password-_-[TITLE:Open Database - NewDatabase.kdbx]+_++_+[Name:m_tbPassword]+_+[Name:m_btnOK]".getBytes()));
+        System.out.println("bamboocloudsso://"+parseByte2HexStr("sso_cs_common.exe-_-C:\\Program Files (x86)\\Tencent\\QQ\\Bin\\QQScLauncher.exe-_-username-_-password-_-[CLASS:TXGuiFoundation; Title:QQ]+_+6+_+1+_+0".getBytes()));
+        System.out.println("bamboocloudsso://"+parseByte2HexStr("sso_bs_common.exe-_-https://passport.csdn.net-_-username-_-password-_-formId:fm1+_+id:username+_+id:password".getBytes()));
+        System.out.println("bamboocloudsso://"+parseByte2HexStr("sso_bs_common.exe-_-https://pan.baidu.com-_-username-_-password-_-formId:TANGRAM__PSP_4__formbuttonId:TANGRAM__PSP_4__submit+_+id:TANGRAM__PSP_4__userName+_+id:TANGRAM__PSP_4__password".getBytes()));
+        System.out.println("bamboocloudsso://"+parseByte2HexStr("sso_bs_common.exe-_-https://github.com/login-_-username-_-password-_-0+_+id:login_field+_+id:password".getBytes()));
     }
 
     /**
