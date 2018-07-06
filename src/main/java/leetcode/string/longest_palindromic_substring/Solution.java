@@ -18,18 +18,18 @@ import java.util.List;
 public class Solution {
     public static void main(String[] args) {
         Solution s = new Solution();
-        System.out.println(s.longestPalindrome("babadada"));
+        System.out.println(s.longestPalindrome("ababababa"));
     }
 
     public String longestPalindrome(String s) {
         if (s == null || s.length() < 2) {
-            return null;
+            return s;
         }
         if (s.length() == 2) {
             if (s.substring(0, 1).equals(s.substring(1, 2))) {
                 return s;
             }
-            return null;
+            return s.substring(0, 1);
         }
         char[] chars = s.toCharArray();
         //存放前两位数字
@@ -40,7 +40,9 @@ public class Solution {
         List<Integer> AXASeeds = new ArrayList<>();
         //存放BB的回文种子的中间坐标即第一个B的坐标
         List<Integer> BBSeeds = new ArrayList<>();
-
+        if (previous[0] == previous[1]) {
+            BBSeeds.add(0);
+        }
         for (int i = 2; i < chars.length; i++) {
             //AXA种子
             if (chars[i] == previous[0]) {
@@ -60,42 +62,48 @@ public class Solution {
         List<Integer> AXASeedsGrow = new ArrayList<>();
         List<Integer> BBSeedsGrow = new ArrayList<>();
 
+        boolean AXAContinue;
         do {
+            AXAContinue = false;
             for (int i = 0; i < AXASeeds.size(); i++) {
                 //种子成长一次
-                if (AXASeeds.get(i) - AXAnums - 1 >= 0 && AXASeeds.get(i) + AXAnums + 1 < AXASeeds.size()) {
-                    if (chars[AXASeeds.get(i) - AXAnums - 1] == chars[AXASeeds.get(i) + AXAnums + 1]) {
+                if (AXASeeds.get(i) - AXAnums - 2 >= 0 && AXASeeds.get(i) + AXAnums + 2 < chars.length) {
+                    if (chars[AXASeeds.get(i) - AXAnums - 2] == chars[AXASeeds.get(i) + AXAnums + 2]) {
                         AXASeedsGrow.add(AXASeeds.get(i));
-                        AXAnums++;
                     }
                 }
             }
             //成长一次后的种子不为空
             if (!AXASeedsGrow.isEmpty()) {
+                AXAnums++;
+                AXAContinue = true;
                 AXASeeds = AXASeedsGrow;
                 AXASeedsGrow = new ArrayList<>();
             }
-        } while (!AXASeedsGrow.isEmpty());
-
+        } while (AXAContinue);
+        boolean BBContinue;
         do {
+            BBContinue = false;
             for (int i = 0; i < BBSeeds.size(); i++) {
                 //种子成长一次
-                if (BBSeeds.get(i) - BBnums - 1 >= 0 && BBSeeds.get(i) + BBnums + 2 < BBSeeds.size()) {
+                if (BBSeeds.get(i) - BBnums - 1 >= 0 && BBSeeds.get(i) + BBnums + 2 < chars.length) {
                     if (chars[BBSeeds.get(i) - BBnums - 1] == chars[BBSeeds.get(i) + BBnums + 2]) {
                         BBSeedsGrow.add(BBSeeds.get(i));
-                        BBnums++;
                     }
                 }
             }
+
             //成长一次后的种子不为空
             if (!BBSeedsGrow.isEmpty()) {
                 BBSeeds = BBSeedsGrow;
+                BBnums++;
+                BBContinue = true;
                 BBSeedsGrow = new ArrayList<>();
             }
-        } while (!BBSeedsGrow.isEmpty());
+        } while (BBContinue);
 
         if (AXASeeds.isEmpty() && BBSeeds.isEmpty()) {
-            return null;
+            return s.substring(0, 1);
         }
 
         if (BBnums > AXAnums) {
