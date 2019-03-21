@@ -1,0 +1,18 @@
+# Operating System Files
+*.DS_Store
+Thumbs.db
+
+# Build Files #
+bin
+build/
+.gradle
+
+# IntelliJ IDEA Files #
+*.iml
+*.ipr
+*.iws
+*.idea
+*.history
+
+# Test files
+out/
